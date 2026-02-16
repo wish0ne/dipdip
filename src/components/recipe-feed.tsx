@@ -10,13 +10,33 @@ export function RecipeFeed({ recipes }: { recipes: Recipe[] }) {
   const [selectedTastes, setSelectedTastes] = useState<(keyof TasteProfile)[]>(
     []
   );
-  const [sortBy, setSortBy] = useState<"popular" | "latest">("popular");
+  const [selectedIngredients, setSelectedIngredients] = useState<string[]>([]);
 
   const handleTasteToggle = (taste: keyof TasteProfile) => {
     setSelectedTastes((prev) =>
       prev.includes(taste) ? prev.filter((t) => t !== taste) : [...prev, taste]
     );
   };
+
+  const handleIngredientToggle = (name: string) => {
+    setSelectedIngredients((prev) =>
+      prev.includes(name) ? prev.filter((n) => n !== name) : [...prev, name]
+    );
+  };
+
+  const ingredientOptions = useMemo(() => {
+    const map = new Map<string, string>();
+    for (const r of recipes) {
+      for (const i of r.ingredients) {
+        if (!map.has(i.name)) {
+          map.set(i.name, i.icon);
+        }
+      }
+    }
+    return Array.from(map, ([name, icon]) => ({ name, icon })).sort((a, b) =>
+      a.name.localeCompare(b.name)
+    );
+  }, [recipes]);
 
   const filteredRecipes = useMemo(() => {
     let result = [...recipes];
@@ -41,6 +61,16 @@ export function RecipeFeed({ recipes }: { recipes: Recipe[] }) {
       );
     }
 
+    // Ingredient filter (AND logic — must contain all selected ingredients)
+    if (selectedIngredients.length > 0) {
+      result = result.filter((r) => {
+        const recipeIngredientNames = r.ingredients.map((i) => i.name);
+        return selectedIngredients.every((name) =>
+          recipeIngredientNames.includes(name)
+        );
+      });
+    }
+
     // Sort
     result.sort(
       (a, b) =>
@@ -48,7 +78,7 @@ export function RecipeFeed({ recipes }: { recipes: Recipe[] }) {
     );
 
     return result;
-  }, [recipes, search, selectedTastes, sortBy]);
+  }, [recipes, search, selectedTastes, selectedIngredients]);
 
   return (
     <>
@@ -57,8 +87,9 @@ export function RecipeFeed({ recipes }: { recipes: Recipe[] }) {
         onSearchChange={setSearch}
         selectedTastes={selectedTastes}
         onTasteToggle={handleTasteToggle}
-        sortBy={sortBy}
-        onSortChange={setSortBy}
+        ingredientOptions={ingredientOptions}
+        selectedIngredients={selectedIngredients}
+        onIngredientToggle={handleIngredientToggle}
         resultCount={filteredRecipes.length}
       />
 

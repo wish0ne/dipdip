@@ -48,7 +48,7 @@ export function RecipeDetailContent({ recipe }: { recipe: Recipe }) {
 
       {/* Content — capture area */}
       <div ref={contentRef} className="px-4 -mt-3 bg-background">
-        <h1 className="text-xl font-extrabold mt-2">{recipe.name}</h1>
+        <h1 className="text-xl font-extrabold mt-5">{recipe.name}</h1>
         <p className="text-[13px] text-muted-foreground mt-1">
           {recipe.author}
         </p>
