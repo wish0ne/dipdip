@@ -9,7 +9,7 @@ export default async function FeedPage() {
   const { data, error } = await supabase
     .from("recipes")
     .select("*")
-    .order("likes", { ascending: false });
+    .order("created_at", { ascending: false });
 
   const recipes = error || !data ? [] : data.map(toRecipe);
 

@@ -1,8 +1,41 @@
 "use client";
 
-import { Search, X } from "lucide-react";
+import { useState } from "react";
+import { Search, X, ChevronDown } from "lucide-react";
 import { tasteFilterOptions } from "@/data/recipes";
 import type { TasteProfile } from "@/types/recipe";
+
+function ExpandableChips({
+  label,
+  count,
+  children,
+}: {
+  label: string;
+  count: number;
+  children: (expanded: boolean) => React.ReactNode;
+}) {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <div className="space-y-1.5">
+      <button
+        onClick={() => setExpanded((v) => !v)}
+        className="flex items-center gap-1 text-[11px] font-medium text-muted-foreground/70"
+      >
+        {label}
+        {count > 0 && (
+          <span className="bg-brand-500 text-white text-[10px] rounded-full px-1.5 leading-4">
+            {count}
+          </span>
+        )}
+        <ChevronDown
+          className={`w-3 h-3 transition-transform ${expanded ? "rotate-180" : ""}`}
+        />
+      </button>
+      {children(expanded)}
+    </div>
+  );
+}
 
 interface RecipeFilterProps {
   search: string;
@@ -67,26 +100,36 @@ export function RecipeFilter({
         </div>
       </div>
 
-      {/* Ingredient filter chips */}
+      {/* Ingredient filter chips (expandable) */}
       {ingredientOptions.length > 0 && (
-        <div className="space-y-1.5">
-          <span className="text-[11px] font-medium text-muted-foreground/70">재료</span>
-          <div className="flex gap-1.5 overflow-x-auto scrollbar-hide pb-1">
-            {ingredientOptions.map((ing) => (
-              <button
-                key={ing.name}
-                onClick={() => onIngredientToggle(ing.name)}
-                className={`shrink-0 px-3 py-1 rounded-xl text-xs font-semibold transition-colors ${
-                  selectedIngredients.includes(ing.name)
-                    ? "bg-brand-500 text-white"
-                    : "bg-card text-muted-foreground border border-border"
-                }`}
-              >
-                {ing.icon} {ing.name}
-              </button>
-            ))}
-          </div>
-        </div>
+        <ExpandableChips
+          label="재료"
+          count={selectedIngredients.length}
+        >
+          {(expanded) => (
+            <div
+              className={
+                expanded
+                  ? "flex flex-wrap gap-1.5"
+                  : "flex gap-1.5 overflow-x-auto scrollbar-hide pb-1"
+              }
+            >
+              {ingredientOptions.map((ing) => (
+                <button
+                  key={ing.name}
+                  onClick={() => onIngredientToggle(ing.name)}
+                  className={`shrink-0 px-3 py-1 rounded-xl text-xs font-semibold transition-colors ${
+                    selectedIngredients.includes(ing.name)
+                      ? "bg-brand-500 text-white"
+                      : "bg-card text-muted-foreground border border-border"
+                  }`}
+                >
+                  {ing.icon} {ing.name}
+                </button>
+              ))}
+            </div>
+          )}
+        </ExpandableChips>
       )}
 
       {/* Result count */}
