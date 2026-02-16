@@ -1,11 +1,6 @@
 import Link from "next/link";
 import type { Recipe } from "@/types/recipe";
 
-function formatLikes(n: number): string {
-  if (n >= 1000) return `${(n / 1000).toFixed(1)}k`;
-  return String(n);
-}
-
 export function RecipeCard({ recipe }: { recipe: Recipe }) {
   return (
     <Link href={`/recipe/${recipe.id}`}>
@@ -37,16 +32,6 @@ export function RecipeCard({ recipe }: { recipe: Recipe }) {
               #{tag}
             </span>
           ))}
-        </div>
-
-        <div className="flex gap-4 mt-3 pt-2.5 border-t border-border">
-          <span className="text-xs text-muted-foreground">
-            ❤️ {formatLikes(recipe.likes)}
-          </span>
-          <span className="text-xs text-muted-foreground">
-            💬 {recipe.comments}
-          </span>
-          <span className="text-xs text-muted-foreground ml-auto">📤</span>
         </div>
       </article>
     </Link>

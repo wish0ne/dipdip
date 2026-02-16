@@ -22,7 +22,5 @@ export interface Recipe {
   tasteProfile: TasteProfile;
   tags: string[];
   pairings: string[];
-  likes: number;
-  comments: number;
   createdAt: string;
 }

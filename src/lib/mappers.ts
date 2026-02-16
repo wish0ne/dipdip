@@ -10,8 +10,6 @@ export function toRecipe(row: Record<string, unknown>): Recipe {
     tasteProfile: row.taste_profile as Recipe["tasteProfile"],
     tags: row.tags as string[],
     pairings: row.pairings as string[],
-    likes: row.likes as number,
-    comments: row.comments as number,
     createdAt: row.created_at as string,
   };
 }

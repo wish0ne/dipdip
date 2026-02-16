@@ -42,14 +42,10 @@ export function RecipeFeed({ recipes }: { recipes: Recipe[] }) {
     }
 
     // Sort
-    if (sortBy === "popular") {
-      result.sort((a, b) => b.likes - a.likes);
-    } else {
-      result.sort(
-        (a, b) =>
-          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-      );
-    }
+    result.sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    );
 
     return result;
   }, [recipes, search, selectedTastes, sortBy]);
@@ -66,7 +62,7 @@ export function RecipeFeed({ recipes }: { recipes: Recipe[] }) {
         resultCount={filteredRecipes.length}
       />
 
-      <div className="px-4 mt-4 space-y-3">
+      <div className="px-4 mt-4 flex flex-col gap-2">
         {filteredRecipes.length === 0 ? (
           <div className="text-center py-16">
             <div className="text-4xl mb-3">🍲</div>
