@@ -2,7 +2,7 @@
 
 import { Search, X } from "lucide-react";
 import { tasteFilterOptions } from "@/data/recipes";
-import type { TasteProfile } from "@/data/recipes";
+import type { TasteProfile } from "@/types/recipe";
 
 interface RecipeFilterProps {
   search: string;

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { Recipe } from "@/data/recipes";
+import type { Recipe } from "@/types/recipe";
 
 function formatLikes(n: number): string {
   if (n >= 1000) return `${(n / 1000).toFixed(1)}k`;
@@ -16,8 +16,7 @@ export function RecipeCard({ recipe }: { recipe: Recipe }) {
               {recipe.name}
             </h3>
             <p className="text-xs text-muted-foreground mt-1">
-              {recipe.author} ·{" "}
-              <span className="text-brand-500">{recipe.store}</span>
+              {recipe.author}
             </p>
           </div>
           <div className="w-11 h-11 bg-brand-50 rounded-xl flex items-center justify-center text-xl shrink-0 ml-3">

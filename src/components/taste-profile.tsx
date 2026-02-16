@@ -1,6 +1,6 @@
 "use client";
 
-import type { TasteProfile } from "@/data/recipes";
+import type { TasteProfile } from "@/types/recipe";
 import { tasteLabels } from "@/data/recipes";
 
 const colorMap: Record<keyof TasteProfile, string> = {

@@ -1,13 +1,24 @@
+import { cache } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Share2 } from "lucide-react";
-import { recipes } from "@/data/recipes";
+import { ArrowLeft } from "lucide-react";
+import { supabase } from "@/lib/supabase";
+import { toRecipe } from "@/lib/mappers";
 import { TasteProfileChart } from "@/components/taste-profile";
 import { ShareButton } from "./share-button";
 
-export function generateStaticParams() {
-  return recipes.map((r) => ({ id: r.id }));
-}
+export const dynamic = "force-dynamic";
+
+const getRecipe = cache(async (id: string) => {
+  const { data, error } = await supabase
+    .from("recipes")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error || !data) return null;
+  return toRecipe(data);
+});
 
 export async function generateMetadata({
   params,
@@ -15,7 +26,7 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const recipe = recipes.find((r) => r.id === id);
+  const recipe = await getRecipe(id);
   if (!recipe) return { title: "레시피를 찾을 수 없습니다" };
   return {
     title: `${recipe.name} - DipDip`,
@@ -38,7 +49,7 @@ export default async function RecipeDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const recipe = recipes.find((r) => r.id === id);
+  const recipe = await getRecipe(id);
 
   if (!recipe) {
     notFound();
@@ -73,11 +84,6 @@ export default async function RecipeDetailPage({
 
       {/* Content */}
       <div className="px-4 -mt-3">
-        {/* Store badge */}
-        <span className="inline-block text-[11px] text-brand-500 bg-brand-50 px-3 py-1 rounded-full font-semibold">
-          {recipe.store}
-        </span>
-
         <h1 className="text-xl font-extrabold mt-2">{recipe.name}</h1>
         <p className="text-[13px] text-muted-foreground mt-1">
           {recipe.author} · ❤️ {formatLikes(recipe.likes)} · 💬{" "}
