@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Recipe } from "@/types/recipe";
+import { getDominantTasteEmoji } from "@/lib/utils";
 
 export function RecipeCard({ recipe }: { recipe: Recipe }) {
   return (
@@ -15,7 +16,7 @@ export function RecipeCard({ recipe }: { recipe: Recipe }) {
             </p>
           </div>
           <div className="w-11 h-11 bg-brand-50 rounded-xl flex items-center justify-center text-xl shrink-0 ml-3">
-            🍲
+            {getDominantTasteEmoji(recipe.tasteProfile)}
           </div>
         </div>
 

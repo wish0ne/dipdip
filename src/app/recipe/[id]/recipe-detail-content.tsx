@@ -7,6 +7,7 @@ import type { Recipe } from "@/types/recipe";
 import { TasteProfileChart } from "@/components/taste-profile";
 import { ShareButton } from "@/components/share-button";
 import { SaveImageButton } from "@/components/save-image-button";
+import { getDominantTasteEmoji } from "@/lib/utils";
 
 const categoryLabels: Record<string, string> = {
   base: "베이스",
@@ -23,7 +24,7 @@ export function RecipeDetailContent({ recipe }: { recipe: Recipe }) {
     <div className="pb-6">
       {/* Hero */}
       <div className="relative h-44 bg-gradient-to-br from-brand-50 to-brand-100 flex items-center justify-center">
-        <span className="text-6xl">🍲</span>
+        <span className="text-6xl">{getDominantTasteEmoji(recipe.tasteProfile)}</span>
         <div className="absolute top-3 left-3">
           <Link
             href="/"
@@ -47,8 +48,8 @@ export function RecipeDetailContent({ recipe }: { recipe: Recipe }) {
       </div>
 
       {/* Content — capture area */}
-      <div ref={contentRef} className="px-4 -mt-3 bg-background">
-        <h1 className="text-xl font-extrabold mt-5">{recipe.name}</h1>
+      <div ref={contentRef} className="px-4 pt-8 pb-4 -mt-3 bg-background">
+        <h1 className="text-xl font-extrabold">{recipe.name}</h1>
         <p className="text-[13px] text-muted-foreground mt-1">
           {recipe.author}
         </p>
@@ -105,19 +106,24 @@ export function RecipeDetailContent({ recipe }: { recipe: Recipe }) {
         </section>
 
         {/* Pairings */}
-        <section className="mt-6 pb-4">
+        <section className="mt-6">
           <h2 className="text-[15px] font-bold mb-3">
             🤝 이 소스와 잘 어울리는 재료
           </h2>
           <div className="flex gap-2 flex-wrap">
-            {recipe.pairings.map((pairing) => (
-              <span
-                key={pairing}
-                className="px-3.5 py-2 bg-card border border-border rounded-xl text-[13px] text-foreground"
-              >
-                {pairing}
-              </span>
-            ))}
+            {recipe.pairings.map((pairing) => {
+              const text = pairing.replace(/\p{Emoji_Presentation}/gu, "").trim();
+              const emoji = pairing.match(/\p{Emoji_Presentation}/gu)?.[0];
+              return (
+                <span
+                  key={pairing}
+                  className="px-3.5 py-2 bg-card border border-border rounded-xl text-[13px] text-foreground flex items-center gap-1"
+                >
+                  {emoji && <span className="text-base">{emoji}</span>}
+                  {text}
+                </span>
+              );
+            })}
           </div>
         </section>
       </div>
