@@ -3,7 +3,7 @@ import { RecipeFeed } from "@/components/recipe-feed";
 import { supabase } from "@/lib/supabase";
 import { toRecipe } from "@/lib/mappers";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export default async function FeedPage() {
   const { data, error } = await supabase

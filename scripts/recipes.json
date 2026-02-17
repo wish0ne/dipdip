@@ -232,5 +232,155 @@
     "유부 🧈",
     "새우 🦐"
   ]
+},
+{
+  "id": "5",
+  "name": "마라 매니아 소스",
+  "author": "중국 본토 스타일",
+  "description": "혀가 얼얼한 정통 마라 조합. 매운맛 덕후 전용.",
+  "ingredients": [
+    { "name": "마라소스", "amount": "2T", "icon": "🔥", "category": "base" },
+    { "name": "고추기름 (라유)", "amount": "1T", "icon": "🌶️", "category": "oil" },
+    { "name": "다진 마늘", "amount": "1T", "icon": "🧄", "category": "seasoning" },
+    { "name": "다진 고추", "amount": "1T", "icon": "🌶️", "category": "topping" },
+    { "name": "고수", "amount": "취향껏", "icon": "🌿", "category": "topping" }
+  ],
+  "taste_profile": { "spicy": 95, "nutty": 20, "fresh": 30, "umami": 80, "salty": 70 },
+  "tags": ["극매운", "마라", "중국식", "도전"],
+  "pairings": ["양고기 🐑", "소고기 🥩", "천엽 🥩", "유부 🧈"]
+},
+{
+  "id": "6",
+  "name": "고수 폭탄 소스",
+  "author": "고수 러버",
+  "description": "고수 향을 극대화한 산뜻한 조합.",
+  "ingredients": [
+    { "name": "간장", "amount": "2T", "icon": "🧂", "category": "base" },
+    { "name": "참기름", "amount": "1T", "icon": "🫒", "category": "oil" },
+    { "name": "다진 마늘", "amount": "0.5T", "icon": "🧄", "category": "seasoning" },
+    { "name": "고수", "amount": "듬뿍", "icon": "🌿", "category": "topping" },
+    { "name": "라임즙", "amount": "0.5T", "icon": "🍋", "category": "seasoning" }
+  ],
+  "taste_profile": { "spicy": 25, "nutty": 10, "fresh": 90, "umami": 60, "salty": 55 },
+  "tags": ["고수", "산뜻", "향긋", "입맛돋움"],
+  "pairings": ["소고기 🥩", "새우 🦐", "청경채 🥬", "두부 🧈"]
+},
+{
+  "id": "7",
+  "name": "태국풍 피넛 소스",
+  "author": "동남아 스타일",
+  "description": "달콤고소한 태국식 감성 조합.",
+  "ingredients": [
+    { "name": "피넛버터", "amount": "2T", "icon": "🥜", "category": "base" },
+    { "name": "스위트 칠리소스", "amount": "1T", "icon": "🌶️", "category": "base" },
+    { "name": "라임즙", "amount": "1T", "icon": "🍋", "category": "seasoning" },
+    { "name": "간장", "amount": "1T", "icon": "🧂", "category": "seasoning" }
+  ],
+  "taste_profile": { "spicy": 40, "nutty": 85, "fresh": 60, "umami": 65, "salty": 45 },
+  "tags": ["태국풍", "달콤", "고소", "이국적"],
+  "pairings": ["닭고기 🍗", "새우 🦐", "버섯 🍄", "유부 🧈"]
+},
+{
+  "id": "8",
+  "name": "초간장 깔끔 소스",
+  "author": "한국식 변형",
+  "description": "기름기 잡아주는 산뜻한 초간장 베이스.",
+  "ingredients": [
+    { "name": "간장", "amount": "2T", "icon": "🧂", "category": "base" },
+    { "name": "식초", "amount": "2T", "icon": "🍶", "category": "base" },
+    { "name": "다진 마늘", "amount": "0.5T", "icon": "🧄", "category": "seasoning" },
+    { "name": "청양고추", "amount": "1T", "icon": "🌶️", "category": "topping" }
+  ],
+  "taste_profile": { "spicy": 45, "nutty": 5, "fresh": 85, "umami": 55, "salty": 65 },
+  "tags": ["깔끔", "초간장", "느끼함제거", "한국식"],
+  "pairings": ["차돌박이 🥩", "숙주 🌱", "배추 🥬"]
+},
+{
+  "id": "9",
+  "name": "마늘 폭탄 소스",
+  "author": "마늘 덕후",
+  "description": "마늘 향을 극대화한 자극적 조합.",
+  "ingredients": [
+    { "name": "마장소스", "amount": "2T", "icon": "🥜", "category": "base" },
+    { "name": "다진 마늘", "amount": "2T", "icon": "🧄", "category": "seasoning" },
+    { "name": "고추기름", "amount": "1T", "icon": "🌶️", "category": "oil" },
+    { "name": "굴소스", "amount": "0.5T", "icon": "🦪", "category": "seasoning" }
+  ],
+  "taste_profile": { "spicy": 60, "nutty": 80, "fresh": 20, "umami": 85, "salty": 60 },
+  "tags": ["마늘", "고소", "강한맛", "중독성"],
+  "pairings": ["양고기 🐑", "소고기 🥩", "버섯 🍄"]
+},
+{
+  "id": "10",
+  "name": "참기름 향긋 소스",
+  "author": "담백파",
+  "description": "고소한 참기름 향 중심의 담백한 조합.",
+  "ingredients": [
+    { "name": "간장", "amount": "2T", "icon": "🧂", "category": "base" },
+    { "name": "참기름", "amount": "1T", "icon": "🫒", "category": "oil" },
+    { "name": "다진 파", "amount": "1T", "icon": "🧅", "category": "topping" }
+  ],
+  "taste_profile": { "spicy": 5, "nutty": 60, "fresh": 50, "umami": 55, "salty": 60 },
+  "tags": ["담백", "고소", "입문", "무난"],
+  "pairings": ["두부 🧈", "버섯 🍄", "소고기 🥩"]
+},
+{
+  "id": "11",
+  "name": "XO 감칠맛 소스",
+  "author": "홍콩풍",
+  "description": "XO소스의 깊은 해산물 감칠맛 조합.",
+  "ingredients": [
+    { "name": "XO소스", "amount": "1T", "icon": "🦪", "category": "base" },
+    { "name": "간장", "amount": "1T", "icon": "🧂", "category": "base" },
+    { "name": "고추기름", "amount": "0.5T", "icon": "🌶️", "category": "oil" },
+    { "name": "다진 마늘", "amount": "0.5T", "icon": "🧄", "category": "seasoning" }
+  ],
+  "taste_profile": { "spicy": 50, "nutty": 20, "fresh": 15, "umami": 95, "salty": 70 },
+  "tags": ["XO", "감칠맛", "해산물", "프리미엄"],
+  "pairings": ["새우 🦐", "오징어 🦑", "관자 🦪"]
+},
+{
+  "id": "12",
+  "name": "버섯 감칠맛 소스",
+  "author": "채식 친화",
+  "description": "버섯 풍미 중심의 감칠맛 조합.",
+  "ingredients": [
+    { "name": "버섯소스", "amount": "2T", "icon": "🍄", "category": "base" },
+    { "name": "간장", "amount": "1T", "icon": "🧂", "category": "base" },
+    { "name": "참기름", "amount": "0.5T", "icon": "🫒", "category": "oil" }
+  ],
+  "taste_profile": { "spicy": 10, "nutty": 30, "fresh": 20, "umami": 85, "salty": 60 },
+  "tags": ["채식", "감칠맛", "버섯", "담백"],
+  "pairings": ["청경채 🥬", "두부 🧈", "팽이버섯 🍄"]
+},
+{
+  "id": "13",
+  "name": "라임 상큼 소스",
+  "author": "동남아 변형",
+  "description": "상큼한 산미가 매력적인 개운 조합.",
+  "ingredients": [
+    { "name": "간장", "amount": "1T", "icon": "🧂", "category": "base" },
+    { "name": "라임즙", "amount": "1T", "icon": "🍋", "category": "seasoning" },
+    { "name": "고추기름", "amount": "0.5T", "icon": "🌶️", "category": "oil" },
+    { "name": "고수", "amount": "취향껏", "icon": "🌿", "category": "topping" }
+  ],
+  "taste_profile": { "spicy": 40, "nutty": 5, "fresh": 95, "umami": 50, "salty": 45 },
+  "tags": ["상큼", "산미", "느끼함제거", "가벼움"],
+  "pairings": ["새우 🦐", "차돌박이 🥩", "숙주 🌱"]
+},
+{
+  "id": "14",
+  "name": "중독성 단짠 소스",
+  "author": "한국인 인기 조합",
+  "description": "달콤짭짤 밸런스가 완벽한 중독성 조합.",
+  "ingredients": [
+    { "name": "스위트 칠리소스", "amount": "2T", "icon": "🌶️", "category": "base" },
+    { "name": "간장", "amount": "1T", "icon": "🧂", "category": "base" },
+    { "name": "마장소스", "amount": "1T", "icon": "🥜", "category": "base" },
+    { "name": "다진 마늘", "amount": "0.5T", "icon": "🧄", "category": "seasoning" }
+  ],
+  "taste_profile": { "spicy": 55, "nutty": 60, "fresh": 30, "umami": 80, "salty": 65 },
+  "tags": ["단짠", "고소", "중독성", "베스트"],
+  "pairings": ["양고기 🐑", "소고기 🥩", "유부 🧈", "버섯 🍄"]
 }
 ]
